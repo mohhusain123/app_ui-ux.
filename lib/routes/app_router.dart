@@ -9,7 +9,6 @@ import '../features/ia/presentation/pages/ia_page.dart';
 
 import '../features/kelas/presentation/pages/kelas_page.dart';
 import '../features/kelas/presentation/pages/course_detail_page.dart';
-<<<<<<< HEAD
 
 =======
 >>>>>>> d59c77d4b87fa513865b8071825300349a4e1404
@@ -18,10 +17,9 @@ import '../features/notifikasi/presentation/pages/notifikasi_page.dart';
 import '../features/profile/presentation/pages/pengaturan_page.dart';
 
 import '../features/tugas/presentation/pages/tugas_page.dart';
-<<<<<<< HEAD
-=======
+
 import '../features/tugas/presentation/pages/jadwal_page.dart';
->>>>>>> d59c77d4b87fa513865b8071825300349a4e1404
+
 import '../features/tugas/presentation/pages/upload_page.dart';
 import '../features/tugas/presentation/pages/quiz_review_page.dart';
 import '../features/tugas/presentation/pages/review_jawaban_page.dart';
