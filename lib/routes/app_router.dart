@@ -3,8 +3,12 @@ import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
 import '../features/dashboard/presentation/pages/main_navigation_page.dart';
 import '../features/ia/presentation/pages/ia_page.dart';
+import '../features/kelas/presentation/pages/kelas_page.dart';
 import '../features/kelas/presentation/pages/course_detail_page.dart';
+import '../features/notifikasi/presentation/pages/notifikasi_page.dart';
+import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/profile/presentation/pages/pengaturan_page.dart';
+import '../features/tugas/presentation/pages/tugas_page.dart';
 import '../features/tugas/presentation/pages/upload_page.dart';
 import '../features/tugas/presentation/pages/quiz_review_page.dart';
 import '../features/tugas/presentation/pages/review_jawaban_page.dart';
@@ -21,8 +25,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case AppRoutes.dashboard:
         return MaterialPageRoute(builder: (_) => const MainNavigationPage());
+      case AppRoutes.kelas:
+        return MaterialPageRoute(builder: (_) => const KelasPage());
       case AppRoutes.detailKelas:
         return MaterialPageRoute(builder: (_) => const CourseDetailPage());
+      case AppRoutes.tugas:
+        return MaterialPageRoute(builder: (_) => const TugasPage());
+      case AppRoutes.notifikasi:
+        return MaterialPageRoute(builder: (_) => const NotifikasiPage());
+      case AppRoutes.profile:
+        return MaterialPageRoute(builder: (_) => const ProfilePage());
       case AppRoutes.upload:
         return MaterialPageRoute(builder: (_) => const UploadPage());
       case AppRoutes.quizReview:

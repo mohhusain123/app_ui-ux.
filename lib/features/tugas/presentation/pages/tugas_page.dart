@@ -12,7 +12,6 @@ class TugasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Tugas'),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: DummyData.assignments.length,

@@ -7,6 +7,7 @@ import '../../../../core/models/class_model.dart';
 import '../../../../core/models/notification_model.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_card.dart';
+import '../../../../routes/app_routes.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -29,157 +30,143 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _isSearching ? _buildSearchAppBar() : _buildNormalAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            // Large Welcome Banner
-            Container(
-              width: double.infinity,
-              height: 180,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    AppColors.primary,
-                    AppColors.primary.withOpacity(0.8),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.primary.withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+          child: Column(
+            children: [
+              // Large Welcome Banner
+              Container(
+                width: double.infinity,
+                height: 180,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.primary,
+                      AppColors.primary.withOpacity(0.8),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.white.withOpacity(0.2),
-                      child: Text(
-                        DummyData.currentUser.name[0].toUpperCase(),
-                        style: AppTextStyles.headline2.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary.withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.white.withOpacity(0.2),
+                        child: Text(
+                          DummyData.currentUser.name[0].toUpperCase(),
+                          style: AppTextStyles.headline2.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Selamat Datang!',
-                            style: AppTextStyles.headline2.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Selamat Datang!',
+                              style: AppTextStyles.headline2.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            DummyData.currentUser.name,
-                            style: AppTextStyles.headline3.copyWith(
-                              color: Colors.white.withOpacity(0.9),
+                            const SizedBox(height: 8),
+                            Text(
+                              DummyData.currentUser.name,
+                              style: AppTextStyles.headline3.copyWith(
+                                color: Colors.white.withOpacity(0.9),
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            'Semangat belajar hari ini! Tetap fokus dan raih target Anda.',
-                            style: AppTextStyles.bodyText2.copyWith(
-                              color: Colors.white.withOpacity(0.8),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Semangat belajar hari ini! Tetap fokus dan raih target Anda.',
+                              style: AppTextStyles.bodyText2.copyWith(
+                                color: Colors.white.withOpacity(0.8),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 24),
+              const SizedBox(height: 24),
 
-            // Important Announcement Banner
-            _buildAnnouncementBanner(),
+              // Important Announcement Banner
+              _buildAnnouncementBanner(),
 
-            const SizedBox(height: 24),
+              const SizedBox(height: 24),
 
-            // Overall Progress Statistics
-            _buildOverallStatsCard(),
+              // Overall Progress Statistics
+              _buildOverallStatsCard(),
 
-            const SizedBox(height: 24),
-            _buildCalendarWidget(context),
-            const SizedBox(height: 24),
-            Text('Menu Cepat', style: AppTextStyles.headline3),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildQuickMenuItem(Icons.school, 'Kelas', () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'Menu Kelas - Lihat semua mata kuliah Anda',
+              const SizedBox(height: 24),
+              _buildCalendarWidget(context),
+              const SizedBox(height: 24),
+              Text('Menu Cepat', style: AppTextStyles.headline3),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildQuickMenuItem(Icons.school, 'Kelas', () {
+                    Navigator.pushNamed(context, AppRoutes.kelas);
+                  }),
+                  _buildQuickMenuItem(Icons.assignment, 'Tugas', () {
+                    Navigator.pushNamed(context, AppRoutes.tugas);
+                  }),
+                  _buildQuickMenuItem(Icons.schedule, 'Jadwal', () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Menu Jadwal - Lihat jadwal kuliah Anda'),
                       ),
-                    ),
-                  );
-                }),
-                _buildQuickMenuItem(Icons.assignment, 'Tugas', () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'Menu Tugas - Kelola tugas dan deadline Anda',
-                      ),
-                    ),
-                  );
-                }),
-                _buildQuickMenuItem(Icons.schedule, 'Jadwal', () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Menu Jadwal - Lihat jadwal kuliah Anda'),
-                    ),
-                  );
-                }),
-                _buildQuickMenuItem(Icons.announcement, 'Pengumuman', () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Menu Pengumuman - Informasi terbaru'),
-                    ),
-                  );
-                }),
-              ],
-            ),
-            const SizedBox(height: 24),
-            Text('Fitur Unggulan', style: AppTextStyles.headline3),
-            const SizedBox(height: 16),
-            _buildFeaturedFeatures(),
-            const SizedBox(height: 24),
-            Text('Kelas Aktif', style: AppTextStyles.headline3),
-            const SizedBox(height: 16),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: DummyData.classes.length,
-              itemBuilder: (context, index) {
-                return _buildClassCard(DummyData.classes[index]);
-              },
-            ),
-            const SizedBox(height: 24),
-            _buildRecentActivitySection(context),
-            const SizedBox(height: 24),
-            _buildTipsAndMotivationSection(context),
-            const SizedBox(height: 24),
-            _buildDailyQuoteCard(),
-            const SizedBox(height: 24),
-            _buildUpcomingEventsCard(context),
-          ],
+                    );
+                  }),
+                  _buildQuickMenuItem(Icons.announcement, 'Pengumuman', () {
+                    Navigator.pushNamed(context, AppRoutes.notifikasi);
+                  }),
+                ],
+              ),
+              const SizedBox(height: 24),
+              Text('Fitur Unggulan', style: AppTextStyles.headline3),
+              const SizedBox(height: 16),
+              _buildFeaturedFeatures(),
+              const SizedBox(height: 24),
+              Text('Kelas Aktif', style: AppTextStyles.headline3),
+              const SizedBox(height: 16),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: DummyData.classes.length,
+                itemBuilder: (context, index) {
+                  return _buildClassCard(DummyData.classes[index]);
+                },
+              ),
+              const SizedBox(height: 24),
+              _buildRecentActivitySection(context),
+              const SizedBox(height: 24),
+              _buildTipsAndMotivationSection(context),
+              const SizedBox(height: 24),
+              _buildDailyQuoteCard(),
+              const SizedBox(height: 24),
+              _buildUpcomingEventsCard(context),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -1383,6 +1370,56 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildFeatureCard({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return CustomCard(
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(icon, color: color, size: 24),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                title,
+                style: AppTextStyles.bodyText2.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: AppTextStyles.caption.copyWith(color: Colors.grey),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
