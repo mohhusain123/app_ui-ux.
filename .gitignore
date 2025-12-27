@@ -43,3 +43,14 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Additional Flutter generated files
+**/android/.gradle
+**/android/app/build/
+**/linux/**/GeneratedPluginRegistrant.cc
+**/linux/**/GeneratedPluginRegistrant.h
+**/linux/**/generated_plugins.cmake
+**/macos/**/GeneratedPluginRegistrant.swift
+**/windows/**/GeneratedPluginRegistrant.cc
+**/windows/**/GeneratedPluginRegistrant.h
+**/windows/**/generated_plugins.cmake
