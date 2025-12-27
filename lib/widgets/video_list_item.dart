@@ -25,15 +25,21 @@ class VideoListItem extends StatelessWidget {
               // Thumbnail - Made responsive
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  thumbnailUrl,
+                child: Container(
                   width:
                       MediaQuery.of(context).size.width *
                       0.25, // 25% of screen width
                   height:
                       MediaQuery.of(context).size.width *
                       0.15, // Maintain aspect ratio
-                  fit: BoxFit.cover,
+                  color: Colors.grey[300],
+                  child: Center(
+                    child: Icon(
+                      Icons.video_library,
+                      color: Colors.grey[600],
+                      size: 24,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(width: 12),

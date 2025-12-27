@@ -29,58 +29,6 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _isSearching ? _buildSearchAppBar() : _buildNormalAppBar(),
-<<<<<<< HEAD
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
-          child: Column(
-            children: [
-              // Large Welcome Banner
-              Container(
-                width: double.infinity,
-                height: 180,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppColors.primary,
-                      AppColors.primary.withOpacity(0.8),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withOpacity(0.3),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.white.withOpacity(0.2),
-                        child: Text(
-                          DummyData.currentUser.name[0].toUpperCase(),
-                          style: AppTextStyles.headline2.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Selamat Datang!',
-=======
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -91,10 +39,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 builder: (context, constraints) {
                   final screenHeight = MediaQuery.of(context).size.height;
                   final bannerHeight =
-                      screenHeight * 0.22; // 22% of screen height
+                      screenHeight * 0.25; // 25% of screen height
                   return Container(
                     width: double.infinity,
-                    height: bannerHeight.clamp(120, 200), // Min 120, max 200
+                    height: bannerHeight.clamp(140, 220), // Min 140, max 220
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -122,27 +70,11 @@ class _DashboardPageState extends State<DashboardPage> {
                             backgroundColor: Colors.white.withOpacity(0.2),
                             child: Text(
                               DummyData.currentUser.name[0].toUpperCase(),
->>>>>>> 20ca3f7 (Add new files)
                               style: AppTextStyles.headline2.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-<<<<<<< HEAD
-                            const SizedBox(height: 8),
-                            Text(
-                              DummyData.currentUser.name,
-                              style: AppTextStyles.headline3.copyWith(
-                                color: Colors.white.withOpacity(0.9),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            Text(
-                              'Semangat belajar hari ini! Tetap fokus dan raih target Anda.',
-                              style: AppTextStyles.bodyText2.copyWith(
-                                color: Colors.white.withOpacity(0.8),
-                              ),
-=======
                           ),
                           const SizedBox(width: 16),
                           Expanded(
@@ -174,20 +106,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
->>>>>>> 20ca3f7 (Add new files)
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-<<<<<<< HEAD
-                    ],
-                  ),
-                ),
-=======
                     ),
                   );
                 },
->>>>>>> 20ca3f7 (Add new files)
               ),
               const SizedBox(height: 24),
 
@@ -196,10 +121,6 @@ class _DashboardPageState extends State<DashboardPage> {
 
               const SizedBox(height: 24),
 
-<<<<<<< HEAD
-              // Overall Progress Statistics
-              _buildOverallStatsCard(),
-=======
               // Overall Progress Statistics - Made responsive
               LayoutBuilder(
                 builder: (context, constraints) {
@@ -307,31 +228,12 @@ class _DashboardPageState extends State<DashboardPage> {
                   );
                 },
               ),
->>>>>>> 20ca3f7 (Add new files)
 
               const SizedBox(height: 24),
               _buildCalendarWidget(context),
               const SizedBox(height: 24),
               Text('Menu Cepat', style: AppTextStyles.headline3),
               const SizedBox(height: 16),
-<<<<<<< HEAD
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildQuickMenuItem(Icons.school, 'Kelas', () {
-                    Navigator.pushNamed(context, AppRoutes.kelas);
-                  }),
-                  _buildQuickMenuItem(Icons.assignment, 'Tugas', () {
-                    Navigator.pushNamed(context, AppRoutes.tugas);
-                  }),
-                  _buildQuickMenuItem(Icons.schedule, 'Jadwal', () {
-                    Navigator.pushNamed(context, AppRoutes.jadwal);
-                  }),
-                  _buildQuickMenuItem(Icons.announcement, 'Pengumuman', () {
-                    Navigator.pushNamed(context, AppRoutes.notifikasi);
-                  }),
-                ],
-=======
               LayoutBuilder(
                 builder: (context, constraints) {
                   // Use GridView for small screens, Row for larger screens
@@ -386,7 +288,6 @@ class _DashboardPageState extends State<DashboardPage> {
                     );
                   }
                 },
->>>>>>> 20ca3f7 (Add new files)
               ),
               const SizedBox(height: 24),
               Text('Fitur Unggulan', style: AppTextStyles.headline3),
@@ -411,10 +312,7 @@ class _DashboardPageState extends State<DashboardPage> {
               _buildDailyQuoteCard(),
               const SizedBox(height: 24),
               _buildUpcomingEventsCard(context),
-<<<<<<< HEAD
-=======
               const SizedBox(height: 80), // Extra space for FAB
->>>>>>> 20ca3f7 (Add new files)
             ],
           ),
         ),
@@ -1476,25 +1374,25 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget _buildFeaturedFeatures() {
     final features = [
       {
-        'image': 'https://via.placeholder.com/50x50/3498DB/FFFFFF?text=Forum',
+        'icon': Icons.forum,
         'title': 'Forum Diskusi',
         'description': 'Diskusikan materi kuliah dengan teman',
         'color': Colors.blue,
       },
       {
-        'image': 'https://via.placeholder.com/50x50/27AE60/FFFFFF?text=Materi',
+        'icon': Icons.library_books,
         'title': 'Materi Tambahan',
         'description': 'Akses e-book dan referensi lengkap',
         'color': Colors.green,
       },
       {
-        'image': 'https://via.placeholder.com/50x50/E67E22/FFFFFF?text=Kuis',
+        'icon': Icons.quiz,
         'title': 'Latihan Soal',
         'description': 'Uji pemahaman dengan kuis interaktif',
         'color': Colors.orange,
       },
       {
-        'image': 'https://via.placeholder.com/50x50/9B59B6/FFFFFF?text=Video',
+        'icon': Icons.video_library,
         'title': 'Video Pembelajaran',
         'description': 'Tonton video tutorial dan penjelasan',
         'color': Colors.purple,
@@ -1532,14 +1430,13 @@ class _DashboardPageState extends State<DashboardPage> {
                     width: 50,
                     height: 50,
                     decoration: BoxDecoration(
+                      color: (feature['color'] as Color).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        feature['image'] as String,
-                        fit: BoxFit.cover,
-                      ),
+                    child: Icon(
+                      feature['icon'] as IconData,
+                      color: feature['color'] as Color,
+                      size: 24,
                     ),
                   ),
                   const SizedBox(height: 12),

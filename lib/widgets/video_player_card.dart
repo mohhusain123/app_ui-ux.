@@ -30,11 +30,15 @@ class VideoPlayerCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: Stack(
             children: [
-              Image.network(
-                thumbnailUrl,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: double.infinity,
+              Container(
+                color: Colors.grey[300],
+                child: Center(
+                  child: Icon(
+                    Icons.video_library,
+                    size: 48,
+                    color: Colors.grey[600],
+                  ),
+                ),
               ),
               Center(
                 child: IconButton(

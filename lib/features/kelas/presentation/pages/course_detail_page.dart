@@ -65,12 +65,18 @@ class CourseDetailPage extends StatelessWidget {
         Container(
           height: 200,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                'https://via.placeholder.com/400x200/FF6B6B/FFFFFF?text=Course+Banner',
-              ),
-              fit: BoxFit.cover,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.primary, AppColors.primary.withOpacity(0.8)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Center(
+            child: Icon(
+              Icons.design_services,
+              size: 80,
+              color: Colors.white.withOpacity(0.7),
             ),
           ),
         ),
@@ -147,9 +153,8 @@ class CourseDetailPage extends StatelessWidget {
                 children: [
                   const CircleAvatar(
                     radius: 30,
-                    backgroundImage: NetworkImage(
-                      'https://via.placeholder.com/60x60/4ECDC4/FFFFFF?text=Instructor',
-                    ),
+                    backgroundColor: AppColors.primary,
+                    child: Icon(Icons.person, color: Colors.white, size: 30),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -264,11 +269,13 @@ class CourseDetailPage extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              image: const DecorationImage(
-                image: NetworkImage(
-                  'https://via.placeholder.com/300x150/74B9FF/FFFFFF?text=UI+Illustration',
-                ),
-                fit: BoxFit.cover,
+              color: AppColors.primary.withOpacity(0.1),
+            ),
+            child: Center(
+              child: Icon(
+                Icons.design_services,
+                size: 60,
+                color: AppColors.primary.withOpacity(0.5),
               ),
             ),
           ),
