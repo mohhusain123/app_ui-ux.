@@ -5,19 +5,11 @@ import '../features/dashboard/presentation/pages/main_navigation_page.dart';
 import '../features/ia/presentation/pages/ia_page.dart';
 import '../features/kelas/presentation/pages/kelas_page.dart';
 import '../features/kelas/presentation/pages/course_detail_page.dart';
-<<<<<<< HEAD
 import '../features/notifikasi/presentation/pages/notifikasi_page.dart';
 import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/profile/presentation/pages/pengaturan_page.dart';
 import '../features/tugas/presentation/pages/tugas_page.dart';
 import '../features/tugas/presentation/pages/jadwal_page.dart';
-=======
-import '../features/kelas/presentation/pages/kelas_page.dart';
-import '../features/notifikasi/presentation/pages/notifikasi_page.dart';
-import '../features/profile/presentation/pages/pengaturan_page.dart';
-import '../features/profile/presentation/pages/profile_page.dart';
-import '../features/tugas/presentation/pages/tugas_page.dart';
->>>>>>> 20ca3f7 (Add new files)
 import '../features/tugas/presentation/pages/upload_page.dart';
 import '../features/tugas/presentation/pages/quiz_review_page.dart';
 import '../features/tugas/presentation/pages/review_jawaban_page.dart';
