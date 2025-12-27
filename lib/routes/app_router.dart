@@ -3,7 +3,13 @@ import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
 import '../features/dashboard/presentation/pages/main_navigation_page.dart';
 import '../features/ia/presentation/pages/ia_page.dart';
+import '../features/kelas/presentation/pages/course_detail_page.dart';
 import '../features/profile/presentation/pages/pengaturan_page.dart';
+import '../features/tugas/presentation/pages/upload_page.dart';
+import '../features/tugas/presentation/pages/quiz_review_page.dart';
+import '../features/tugas/presentation/pages/review_jawaban_page.dart';
+import '../features/tugas/presentation/pages/quiz_result_page.dart';
+import '../screens/video_detail_screen.dart';
 import 'app_routes.dart';
 
 class AppRouter {
@@ -15,6 +21,18 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case AppRoutes.dashboard:
         return MaterialPageRoute(builder: (_) => const MainNavigationPage());
+      case AppRoutes.detailKelas:
+        return MaterialPageRoute(builder: (_) => const CourseDetailPage());
+      case AppRoutes.upload:
+        return MaterialPageRoute(builder: (_) => const UploadPage());
+      case AppRoutes.quizReview:
+        return MaterialPageRoute(builder: (_) => const QuizReviewPage());
+      case AppRoutes.reviewJawaban:
+        return MaterialPageRoute(builder: (_) => const ReviewJawabanPage());
+      case AppRoutes.quizResult:
+        return MaterialPageRoute(builder: (_) => const QuizResultPage());
+      case AppRoutes.videoDetail:
+        return MaterialPageRoute(builder: (_) => const VideoDetailScreen());
       case AppRoutes.ia:
         return MaterialPageRoute(builder: (_) => const IaPage());
       case AppRoutes.pengaturan:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 import 'dashboard_page.dart';
 import '../../../kelas/presentation/pages/kelas_page.dart';
 import '../../../tugas/presentation/pages/tugas_page.dart';
@@ -25,6 +26,14 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
     const ProfilePage(),
   ];
 
+  static const List<String> _titles = [
+    'Home',
+    'Kelas',
+    'Tugas',
+    'Notifikasi',
+    'Profile',
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -34,6 +43,10 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: _titles[_selectedIndex],
+        actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
+      ),
       body: IndexedStack(index: _selectedIndex, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -50,14 +63,32 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
         selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
+        backgroundColor: AppColors.surface,
+        elevation: 8.0,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AppRoutes.ia);
-        },
-        backgroundColor: AppColors.primary,
-        child: const Icon(Icons.smart_toy),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              // Add action for new assignment or something
+            },
+            backgroundColor: AppColors.secondary,
+            mini: true,
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(height: 16),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.ia);
+            },
+            backgroundColor: AppColors.primary,
+            child: const Icon(Icons.smart_toy),
+          ),
+        ],
       ),
     );
   }

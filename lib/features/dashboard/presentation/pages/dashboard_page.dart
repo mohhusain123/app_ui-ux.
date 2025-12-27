@@ -29,10 +29,9 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _isSearching ? _buildSearchAppBar() : _buildNormalAppBar(),
-      body: SingleChildScrollView(
+      body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Large Welcome Banner
             Container(
@@ -58,29 +57,47 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Row(
                   children: [
-                    Text(
-                      'Selamat Datang!',
-                      style: AppTextStyles.headline2.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white.withOpacity(0.2),
+                      child: Text(
+                        DummyData.currentUser.name[0].toUpperCase(),
+                        style: AppTextStyles.headline2.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      DummyData.currentUser.name,
-                      style: AppTextStyles.headline3.copyWith(
-                        color: Colors.white.withOpacity(0.9),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Semangat belajar hari ini! Tetap fokus dan raih target Anda.',
-                      style: AppTextStyles.bodyText2.copyWith(
-                        color: Colors.white.withOpacity(0.8),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Selamat Datang!',
+                            style: AppTextStyles.headline2.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            DummyData.currentUser.name,
+                            style: AppTextStyles.headline3.copyWith(
+                              color: Colors.white.withOpacity(0.9),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(
+                            'Semangat belajar hari ini! Tetap fokus dan raih target Anda.',
+                            style: AppTextStyles.bodyText2.copyWith(
+                              color: Colors.white.withOpacity(0.8),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -140,6 +157,10 @@ class _DashboardPageState extends State<DashboardPage> {
               ],
             ),
             const SizedBox(height: 24),
+            Text('Fitur Unggulan', style: AppTextStyles.headline3),
+            const SizedBox(height: 16),
+            _buildFeaturedFeatures(),
+            const SizedBox(height: 24),
             Text('Kelas Aktif', style: AppTextStyles.headline3),
             const SizedBox(height: 16),
             ListView.builder(
@@ -154,6 +175,8 @@ class _DashboardPageState extends State<DashboardPage> {
             _buildRecentActivitySection(context),
             const SizedBox(height: 24),
             _buildTipsAndMotivationSection(context),
+            const SizedBox(height: 24),
+            _buildDailyQuoteCard(),
             const SizedBox(height: 24),
             _buildUpcomingEventsCard(context),
           ],
@@ -1199,6 +1222,167 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildDailyQuoteCard() {
+    return CustomCard(
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.purple.withOpacity(0.1),
+              Colors.blue.withOpacity(0.1),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.purple.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Icon(
+                    Icons.format_quote,
+                    color: Colors.purple,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  'Kutipan Harian',
+                  style: AppTextStyles.headline3.copyWith(
+                    color: Colors.purple,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              '"Belajar adalah proses seumur hidup. Setiap hari adalah kesempatan untuk menjadi lebih baik."',
+              style: AppTextStyles.bodyText1.copyWith(
+                fontStyle: FontStyle.italic,
+                height: 1.4,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              '- Albert Einstein',
+              style: AppTextStyles.caption.copyWith(
+                color: Colors.grey[600],
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFeaturedFeatures() {
+    final features = [
+      {
+        'icon': Icons.forum,
+        'title': 'Forum Diskusi',
+        'description': 'Diskusikan materi kuliah dengan teman',
+        'color': Colors.blue,
+      },
+      {
+        'icon': Icons.library_books,
+        'title': 'Materi Tambahan',
+        'description': 'Akses e-book dan referensi lengkap',
+        'color': Colors.green,
+      },
+      {
+        'icon': Icons.quiz,
+        'title': 'Latihan Soal',
+        'description': 'Uji pemahaman dengan kuis interaktif',
+        'color': Colors.orange,
+      },
+      {
+        'icon': Icons.video_library,
+        'title': 'Video Pembelajaran',
+        'description': 'Tonton video tutorial dan penjelasan',
+        'color': Colors.purple,
+      },
+    ];
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+        childAspectRatio: 1.2,
+      ),
+      itemCount: features.length,
+      itemBuilder: (context, index) {
+        final feature = features[index];
+        return CustomCard(
+          child: InkWell(
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Fitur ${feature['title']} akan segera hadir'),
+                ),
+              );
+            },
+            borderRadius: BorderRadius.circular(12),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: (feature['color'] as Color).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      feature['icon'] as IconData,
+                      color: feature['color'] as Color,
+                      size: 24,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    feature['title'] as String,
+                    style: AppTextStyles.bodyText2.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    feature['description'] as String,
+                    style: AppTextStyles.caption.copyWith(color: Colors.grey),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
