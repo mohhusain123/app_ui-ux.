@@ -5,7 +5,6 @@ import '../../../../core/dummy_data.dart';
 import '../../../../core/models/assignment_model.dart';
 import '../../../../core/models/class_model.dart';
 import '../../../../core/models/notification_model.dart';
-import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_card.dart';
 import '../../../../routes/app_routes.dart';
 
@@ -30,6 +29,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _isSearching ? _buildSearchAppBar() : _buildNormalAppBar(),
+<<<<<<< HEAD
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
@@ -80,11 +80,55 @@ class _DashboardPageState extends State<DashboardPage> {
                           children: [
                             Text(
                               'Selamat Datang!',
+=======
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              // Large Welcome Banner - Made responsive
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final screenHeight = MediaQuery.of(context).size.height;
+                  final bannerHeight =
+                      screenHeight * 0.22; // 22% of screen height
+                  return Container(
+                    width: double.infinity,
+                    height: bannerHeight.clamp(120, 200), // Min 120, max 200
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          AppColors.primary,
+                          AppColors.primary.withOpacity(0.8),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(0.3),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Colors.white.withOpacity(0.2),
+                            child: Text(
+                              DummyData.currentUser.name[0].toUpperCase(),
+>>>>>>> 20ca3f7 (Add new files)
                               style: AppTextStyles.headline2.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+<<<<<<< HEAD
                             const SizedBox(height: 8),
                             Text(
                               DummyData.currentUser.name,
@@ -98,13 +142,52 @@ class _DashboardPageState extends State<DashboardPage> {
                               style: AppTextStyles.bodyText2.copyWith(
                                 color: Colors.white.withOpacity(0.8),
                               ),
+=======
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Selamat Datang!',
+                                  style: AppTextStyles.headline2.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  DummyData.currentUser.name,
+                                  style: AppTextStyles.headline3.copyWith(
+                                    color: Colors.white.withOpacity(0.9),
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
+                                Text(
+                                  'Semangat belajar hari ini! Tetap fokus dan raih target Anda.',
+                                  style: AppTextStyles.bodyText2.copyWith(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+>>>>>>> 20ca3f7 (Add new files)
                             ),
                           ],
                         ),
                       ),
+<<<<<<< HEAD
                     ],
                   ),
                 ),
+=======
+                    ),
+                  );
+                },
+>>>>>>> 20ca3f7 (Add new files)
               ),
               const SizedBox(height: 24),
 
@@ -113,14 +196,125 @@ class _DashboardPageState extends State<DashboardPage> {
 
               const SizedBox(height: 24),
 
+<<<<<<< HEAD
               // Overall Progress Statistics
               _buildOverallStatsCard(),
+=======
+              // Overall Progress Statistics - Made responsive
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          AppColors.primary.withOpacity(0.8),
+                          AppColors.primary,
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Statistik Keseluruhan',
+                                style: AppTextStyles.headline3.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            // Circular Progress Chart
+                            Container(
+                              width: 60,
+                              height: 60,
+                              child: Stack(
+                                children: [
+                                  CircularProgressIndicator(
+                                    value: _calculateAverageProgress() / 100,
+                                    backgroundColor: Colors.white.withOpacity(
+                                      0.3,
+                                    ),
+                                    valueColor:
+                                        const AlwaysStoppedAnimation<Color>(
+                                          Colors.white,
+                                        ),
+                                    strokeWidth: 6,
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      '${_calculateAverageProgress()}%',
+                                      style: AppTextStyles.caption.copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _buildStatItem(
+                              '${DummyData.classes.length}',
+                              'Total\nMata Kuliah',
+                            ),
+                            _buildStatItem(
+                              '${DummyData.classes.where((c) => c.progress == 100).length}',
+                              'Selesai',
+                            ),
+                            _buildStatItem(
+                              '${DummyData.assignments.where((a) => a.status != AssignmentStatus.graded).length}',
+                              'Tugas\nAktif',
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        LinearProgressIndicator(
+                          value: _calculateAverageProgress() / 100,
+                          backgroundColor: Colors.white.withOpacity(0.3),
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Progress Rata-rata',
+                          style: AppTextStyles.caption.copyWith(
+                            color: Colors.white.withOpacity(0.8),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+>>>>>>> 20ca3f7 (Add new files)
 
               const SizedBox(height: 24),
               _buildCalendarWidget(context),
               const SizedBox(height: 24),
               Text('Menu Cepat', style: AppTextStyles.headline3),
               const SizedBox(height: 16),
+<<<<<<< HEAD
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -137,6 +331,62 @@ class _DashboardPageState extends State<DashboardPage> {
                     Navigator.pushNamed(context, AppRoutes.notifikasi);
                   }),
                 ],
+=======
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  // Use GridView for small screens, Row for larger screens
+                  if (constraints.maxWidth < 600) {
+                    return GridView.count(
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: 1.5,
+                      children: [
+                        _buildQuickMenuItem(Icons.school, 'Kelas', () {
+                          Navigator.pushNamed(context, AppRoutes.kelas);
+                        }),
+                        _buildQuickMenuItem(Icons.assignment, 'Tugas', () {
+                          Navigator.pushNamed(context, AppRoutes.tugas);
+                        }),
+                        _buildQuickMenuItem(Icons.schedule, 'Jadwal', () {
+                          Navigator.pushNamed(context, AppRoutes.notifikasi);
+                        }),
+                        _buildQuickMenuItem(
+                          Icons.announcement,
+                          'Pengumuman',
+                          () {
+                            Navigator.pushNamed(context, AppRoutes.notifikasi);
+                          },
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildQuickMenuItem(Icons.school, 'Kelas', () {
+                          Navigator.pushNamed(context, AppRoutes.kelas);
+                        }),
+                        _buildQuickMenuItem(Icons.assignment, 'Tugas', () {
+                          Navigator.pushNamed(context, AppRoutes.tugas);
+                        }),
+                        _buildQuickMenuItem(Icons.schedule, 'Jadwal', () {
+                          Navigator.pushNamed(context, AppRoutes.notifikasi);
+                        }),
+                        _buildQuickMenuItem(
+                          Icons.announcement,
+                          'Pengumuman',
+                          () {
+                            Navigator.pushNamed(context, AppRoutes.notifikasi);
+                          },
+                        ),
+                      ],
+                    );
+                  }
+                },
+>>>>>>> 20ca3f7 (Add new files)
               ),
               const SizedBox(height: 24),
               Text('Fitur Unggulan', style: AppTextStyles.headline3),
@@ -161,6 +411,10 @@ class _DashboardPageState extends State<DashboardPage> {
               _buildDailyQuoteCard(),
               const SizedBox(height: 24),
               _buildUpcomingEventsCard(context),
+<<<<<<< HEAD
+=======
+              const SizedBox(height: 80), // Extra space for FAB
+>>>>>>> 20ca3f7 (Add new files)
             ],
           ),
         ),
@@ -353,7 +607,38 @@ class _DashboardPageState extends State<DashboardPage> {
         },
       ),
       actions: [
-        if (_searchController.text.isNotEmpty)
+        if (_searchController.text.isNotEmpty) ...[
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              String query = _searchController.text.toLowerCase();
+              if (query.contains('kelas') ||
+                  query.contains('mata kuliah') ||
+                  query.contains('course')) {
+                Navigator.pushNamed(context, AppRoutes.kelas);
+              } else if (query.contains('tugas') ||
+                  query.contains('assignment')) {
+                Navigator.pushNamed(context, AppRoutes.tugas);
+              } else if (query.contains('jadwal') ||
+                  query.contains('schedule') ||
+                  query.contains('pengumuman') ||
+                  query.contains('announcement') ||
+                  query.contains('notifikasi') ||
+                  query.contains('notification')) {
+                Navigator.pushNamed(context, AppRoutes.notifikasi);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Tidak ada hasil untuk pencarian tersebut'),
+                  ),
+                );
+              }
+              setState(() {
+                _isSearching = false;
+                _searchController.clear();
+              });
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.clear),
             onPressed: () {
@@ -361,6 +646,7 @@ class _DashboardPageState extends State<DashboardPage> {
               setState(() {});
             },
           ),
+        ],
       ],
     );
   }
@@ -992,100 +1278,13 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  Widget _buildOverallStatsCard() {
-    // Calculate overall statistics
+  int _calculateAverageProgress() {
     final classes = DummyData.classes;
-    final totalClasses = classes.length;
-    final averageProgress = classes.isNotEmpty
+    return classes.isNotEmpty
         ? (classes.map((c) => c.progress).reduce((a, b) => a + b) /
-                  totalClasses)
+                  classes.length)
               .round()
         : 0;
-    final completedClasses = classes.where((c) => c.progress == 100).length;
-    final activeAssignments = DummyData.assignments
-        .where((a) => a.status != AssignmentStatus.graded)
-        .length;
-
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [AppColors.primary.withOpacity(0.8), AppColors.primary],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primary.withOpacity(0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Statistik Keseluruhan',
-                style: AppTextStyles.headline3.copyWith(color: Colors.white),
-              ),
-              // Circular Progress Chart
-              Container(
-                width: 60,
-                height: 60,
-                child: Stack(
-                  children: [
-                    CircularProgressIndicator(
-                      value: averageProgress / 100,
-                      backgroundColor: Colors.white.withOpacity(0.3),
-                      valueColor: const AlwaysStoppedAnimation<Color>(
-                        Colors.white,
-                      ),
-                      strokeWidth: 6,
-                    ),
-                    Center(
-                      child: Text(
-                        '$averageProgress%',
-                        style: AppTextStyles.caption.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildStatItem('$totalClasses', 'Total\nMata Kuliah'),
-              _buildStatItem('$completedClasses', 'Selesai'),
-              _buildStatItem('$activeAssignments', 'Tugas\nAktif'),
-            ],
-          ),
-          const SizedBox(height: 12),
-          LinearProgressIndicator(
-            value: averageProgress / 100,
-            backgroundColor: Colors.white.withOpacity(0.3),
-            valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Progress Rata-rata',
-            style: AppTextStyles.caption.copyWith(
-              color: Colors.white.withOpacity(0.8),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   Widget _buildStatItem(String value, String label) {

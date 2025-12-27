@@ -22,13 +22,17 @@ class VideoListItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              // Thumbnail
+              // Thumbnail - Made responsive
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
                   thumbnailUrl,
-                  width: 120,
-                  height: 70,
+                  width:
+                      MediaQuery.of(context).size.width *
+                      0.25, // 25% of screen width
+                  height:
+                      MediaQuery.of(context).size.width *
+                      0.15, // Maintain aspect ratio
                   fit: BoxFit.cover,
                 ),
               ),

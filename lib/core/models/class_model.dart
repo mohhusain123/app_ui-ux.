@@ -5,6 +5,7 @@ class ClassModel {
   final String description;
   final int progress; // 0-100
   final String imageUrl;
+  final bool isActive;
 
   ClassModel({
     required this.id,
@@ -13,6 +14,7 @@ class ClassModel {
     required this.description,
     required this.progress,
     required this.imageUrl,
+    this.isActive = true,
   });
 
   factory ClassModel.fromJson(Map<String, dynamic> json) {
