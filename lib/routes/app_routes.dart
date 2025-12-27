@@ -5,6 +5,7 @@ class AppRoutes {
   static const String kelas = '/kelas';
   static const String detailKelas = '/detail-kelas';
   static const String tugas = '/tugas';
+  static const String jadwal = '/jadwal';
   static const String notifikasi = '/notifikasi';
   static const String upload = '/upload';
   static const String quizReview = '/quiz-review';

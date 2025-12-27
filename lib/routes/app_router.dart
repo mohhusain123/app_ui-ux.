@@ -9,6 +9,7 @@ import '../features/notifikasi/presentation/pages/notifikasi_page.dart';
 import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/profile/presentation/pages/pengaturan_page.dart';
 import '../features/tugas/presentation/pages/tugas_page.dart';
+import '../features/tugas/presentation/pages/jadwal_page.dart';
 import '../features/tugas/presentation/pages/upload_page.dart';
 import '../features/tugas/presentation/pages/quiz_review_page.dart';
 import '../features/tugas/presentation/pages/review_jawaban_page.dart';
@@ -31,6 +32,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CourseDetailPage());
       case AppRoutes.tugas:
         return MaterialPageRoute(builder: (_) => const TugasPage());
+      case AppRoutes.jadwal:
+        return MaterialPageRoute(builder: (_) => const JadwalPage());
       case AppRoutes.notifikasi:
         return MaterialPageRoute(builder: (_) => const NotifikasiPage());
       case AppRoutes.profile:

@@ -131,11 +131,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     Navigator.pushNamed(context, AppRoutes.tugas);
                   }),
                   _buildQuickMenuItem(Icons.schedule, 'Jadwal', () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Menu Jadwal - Lihat jadwal kuliah Anda'),
-                      ),
-                    );
+                    Navigator.pushNamed(context, AppRoutes.jadwal);
                   }),
                   _buildQuickMenuItem(Icons.announcement, 'Pengumuman', () {
                     Navigator.pushNamed(context, AppRoutes.notifikasi);
@@ -1281,25 +1277,25 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget _buildFeaturedFeatures() {
     final features = [
       {
-        'icon': Icons.forum,
+        'image': 'https://via.placeholder.com/50x50/3498DB/FFFFFF?text=Forum',
         'title': 'Forum Diskusi',
         'description': 'Diskusikan materi kuliah dengan teman',
         'color': Colors.blue,
       },
       {
-        'icon': Icons.library_books,
+        'image': 'https://via.placeholder.com/50x50/27AE60/FFFFFF?text=Materi',
         'title': 'Materi Tambahan',
         'description': 'Akses e-book dan referensi lengkap',
         'color': Colors.green,
       },
       {
-        'icon': Icons.quiz,
+        'image': 'https://via.placeholder.com/50x50/E67E22/FFFFFF?text=Kuis',
         'title': 'Latihan Soal',
         'description': 'Uji pemahaman dengan kuis interaktif',
         'color': Colors.orange,
       },
       {
-        'icon': Icons.video_library,
+        'image': 'https://via.placeholder.com/50x50/9B59B6/FFFFFF?text=Video',
         'title': 'Video Pembelajaran',
         'description': 'Tonton video tutorial dan penjelasan',
         'color': Colors.purple,
@@ -1337,13 +1333,14 @@ class _DashboardPageState extends State<DashboardPage> {
                     width: 50,
                     height: 50,
                     decoration: BoxDecoration(
-                      color: (feature['color'] as Color).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Icon(
-                      feature['icon'] as IconData,
-                      color: feature['color'] as Color,
-                      size: 24,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        feature['image'] as String,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
