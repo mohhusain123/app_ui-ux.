@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
-import '../../../../routes/app_routes.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
-import 'dashboard_page.dart';
 import '../../../kelas/presentation/pages/kelas_page.dart';
-import '../../../tugas/presentation/pages/tugas_page.dart';
 import '../../../notifikasi/presentation/pages/notifikasi_page.dart';
 import '../../../profile/presentation/pages/profile_page.dart';
 
@@ -19,20 +16,12 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   int _selectedIndex = 0;
 
   static final List<Widget> _pages = [
-    const DashboardPage(),
     const KelasPage(),
-    const TugasPage(),
     const NotifikasiPage(),
     const ProfilePage(),
   ];
 
-  static const List<String> _titles = [
-    'Home',
-    'Kelas',
-    'Tugas',
-    'Notifikasi',
-    'Profile',
-  ];
+  static const List<String> _titles = ['Kelas', 'Notifikasi', 'Profil'];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -50,14 +39,12 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
       body: IndexedStack(index: _selectedIndex, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Kelas'),
-          BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Tugas'),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
             label: 'Notifikasi',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: AppColors.primary,
@@ -66,29 +53,8 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColors.surface,
         elevation: 8.0,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              // Add action for new assignment or something
-            },
-            backgroundColor: AppColors.secondary,
-            mini: true,
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 16),
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.ia);
-            },
-            backgroundColor: AppColors.primary,
-            child: const Icon(Icons.smart_toy),
-          ),
-        ],
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
       ),
     );
   }

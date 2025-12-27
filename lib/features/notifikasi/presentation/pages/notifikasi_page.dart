@@ -3,7 +3,6 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../../core/dummy_data.dart';
 import '../../../../core/models/notification_model.dart';
-import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_card.dart';
 
 class NotifikasiPage extends StatelessWidget {
@@ -11,58 +10,50 @@ class NotifikasiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'Notifikasi'),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: DummyData.notifications.length,
-        itemBuilder: (context, index) {
-          final notification = DummyData.notifications[index];
-          return CustomCard(
-            margin: const EdgeInsets.only(bottom: 12),
-            child: Row(
-              children: [
-                _buildIcon(notification.type),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        notification.title,
-                        style: AppTextStyles.bodyText1.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: DummyData.notifications.length,
+      itemBuilder: (context, index) {
+        final notification = DummyData.notifications[index];
+        return CustomCard(
+          margin: const EdgeInsets.only(bottom: 12),
+          child: Row(
+            children: [
+              _buildIcon(notification.type),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      notification.title,
+                      style: AppTextStyles.bodyText1.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        notification.message,
-                        style: AppTextStyles.bodyText2,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        _formatTimestamp(notification.timestamp),
-                        style: AppTextStyles.caption.copyWith(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(notification.message, style: AppTextStyles.bodyText2),
+                    const SizedBox(height: 4),
+                    Text(
+                      _formatTimestamp(notification.timestamp),
+                      style: AppTextStyles.caption.copyWith(color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+              if (!notification.isRead)
+                Container(
+                  width: 8,
+                  height: 8,
+                  decoration: const BoxDecoration(
+                    color: AppColors.primary,
+                    shape: BoxShape.circle,
                   ),
                 ),
-                if (!notification.isRead)
-                  Container(
-                    width: 8,
-                    height: 8,
-                    decoration: const BoxDecoration(
-                      color: AppColors.primary,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-              ],
-            ),
-          );
-        },
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 
